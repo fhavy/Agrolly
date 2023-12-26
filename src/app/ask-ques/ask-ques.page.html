@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{language.ask_a_question}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+        <ion-textarea rows="15" [attr.placeholder]="language.ask_a_question" [(ngModel)]="question" required></ion-textarea>
+    </ion-item>
+
+    <ion-item *ngIf="clickedImage !== undefined">
+      <ion-grid>
+        <ion-row class="previewImage">
+        
+        <ion-col size="10">
+        <img [src]="clickedImage" class="preview" />
+        </ion-col>
+      
+        <ion-col size="2" class="closeBtn">
+        <ion-icon name="close" (click)="removeImage()" size="large"></ion-icon>
+        </ion-col>
+      
+        </ion-row>
+        </ion-grid>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon (click)="captureImage()" slot="end" name="camera" size="large"></ion-icon>
+    </ion-item>
+
+
+    <ion-item lines="none">
+        <ion-button type="submit" (click)="submitQues()" color="success">{{language.submit}}</ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>

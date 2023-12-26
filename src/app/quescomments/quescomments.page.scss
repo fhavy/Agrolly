@@ -1,0 +1,47 @@
+textarea {
+    resize: none;
+    width: 100%;
+    border-radius: 1px;
+    border: thin;
+}
+
+.stamp {
+    color: grey;
+    font-size: small;
+    font-weight: 400;
+}
+
+.send {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.preview {
+    width: 75px;
+    height: 75px;
+    border-radius: 3px;
+}
+
+.previewImage, .closeBtn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    padding: 3px;
+    background-color:lightsteelblue;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+.commentImage {
+    width: fit-content;
+    height: fit-content;
+}
+
+.thumbnail  {
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+}

@@ -1,0 +1,38 @@
+<ion-content>
+  <div class="centerContent">
+    <div class="loginBar">
+      <div class="small_logo">
+        <img class="logo" src="../../assets/logo_small.svg" /><h2>{{language.agrolly}}</h2>
+        </div>
+        <p>{{language.Edit_msg}}</p>
+        <input type="text" [attr.placeholder]="language.full_name" class="crediantials input-block" [(ngModel)]="name"/>
+          <div class="countrySelect crediantials input-block">
+            <ion-icon [attr.src]="countrySelectedIcon" size="large"></ion-icon>
+            <ion-select class="crediantials" [attr.placeholder]="language.country" interface="action-sheet" [(ngModel)]="countrySelected" (ionChange)="showCountryIcon()" required>
+              <ion-select-option *ngFor="let c of countries" class="fold-lines" [value]="c.name">{{c.name}}</ion-select-option>
+            </ion-select>
+          </div>
+
+          <div class="countrySelect crediantials input-block"  *ngIf="showStates">
+            <ion-icon [attr.src]="countrySelectedIcon" size="large"></ion-icon>
+            <ion-select class="crediantials" [attr.placeholder]="language.state" interface="action-sheet" [(ngModel)]="stateSelected" *ngIf="showStates" (ionChange)="showCity()" required>
+              <ion-select-option *ngFor="let s of states" class="fold-lines" [value]="s">{{s}}</ion-select-option>
+            </ion-select>
+          </div>
+
+          <div class="countrySelect crediantials input-block"  *ngIf="showCities">
+            <ion-icon [attr.src]="countrySelectedIcon" size="large"></ion-icon>
+            <ion-select class="crediantials" [attr.placeholder]="language.city" interface="action-sheet" [(ngModel)]="citySelected" *ngIf="showStates && stateSelected != 'Paraná (PR)'" (ionChange)="showCity()" required>
+              <ion-select-option *ngFor="let c of cities" class="fold-lines" [value]="c">{{c}}</ion-select-option>
+            </ion-select>
+            <ion-select class="crediantials" [attr.placeholder]="language.city" interface="action-sheet" [(ngModel)]="citySelected" *ngIf="showStates && stateSelected == 'Paraná (PR)'" (ionChange)="showCity()" required>
+              <ion-select-option *ngFor="let item of brazilCities; let i = index;" [attr.value]="brazilCities[i]['City']">
+                {{brazilCities[i]['City']}}
+              </ion-select-option>
+            </ion-select>
+          </div>
+        <input type="password" [attr.placeholder]="language.cur_pass_apply_changes" class="crediantials input-block" [(ngModel)]="password" required/>
+        <ion-button class="crediantials" (click)="update()"><b>{{language.update_profile}}</b> <ion-icon name="person"></ion-icon></ion-button>
+    </div>
+  </div>
+</ion-content>
